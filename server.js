@@ -60,7 +60,7 @@ function countFlips(array) {
     return output;
 }
 
-app.get('/app/flips/:number', (req, res) => {
+app.get('/app/flips/:number([0-9]{1,4})', (req, res) => {
     var flips = coinFlips(req.params.number)
     var summary = countFlips(flips)
     res.status(200).json({"raw":flips,"summary":summary})
