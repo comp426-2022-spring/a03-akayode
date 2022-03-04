@@ -4,6 +4,8 @@ const args = require('minimist')(process.argv.slice(2))
 
 args['port']
 
+const call = args.call
+
 const port = args.port || process.env.PORT || 5000
 
 const server = app.listen(port, () => {
@@ -21,17 +23,7 @@ app.get('/app/', (req, res) => {
     res.end(res.statusCode + ' ' + res.statusMessage);
 });
 
-function coinFlip() {
-    let flip = Math.random();
-    if (flip < 0.5) {
-      var result = "heads";
-    } else {
-      var result = "tails";
-    }
-    return result;
-  }
-
-app.get('/app/flip', (req, res) => {
+app.get('/app/flip/', (req, res) => {
     var flip = coinFlip()
     res.status(200).json({"flip":flip})
 })
