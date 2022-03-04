@@ -61,9 +61,9 @@ function countFlips(array) {
 }
 
 app.get('/app/flips/:number', (req, res) => {
-    const flips = coinFlips(req.params.number)
-    const summary = countFlips(flips)
-    res.status(200).json({"raw": flips, "summary": summary})
+    var flips = coinFlips(req.params.number)
+    var summary = countFlips(flips)
+    res.status(200).json({"raw":flips,"summary":summary})
 });
 
 function flipACoin(call) {
@@ -77,7 +77,7 @@ function flipACoin(call) {
 
 app.get('/app/flip/call/:guess', (req, res) => {
     const result = flipACoin(req.params.guess)
-    res.status(200).json(result)
+    res.status(200).json({ result })
 });
 
 app.use(function(req, res){
