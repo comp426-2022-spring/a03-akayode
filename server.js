@@ -23,6 +23,16 @@ app.get('/app/', (req, res) => {
     res.end(res.statusCode + ' ' + res.statusMessage);
 });
 
+function coinFlip() {
+    let flip = Math.random();
+    if (flip < 0.5) {
+      var result = "heads";
+    } else {
+      var result = "tails";
+    }
+    return result;
+  }
+
 app.get('/app/flip/', (req, res) => {
     var flip = coinFlip()
     res.status(200).json({"flip":flip})
