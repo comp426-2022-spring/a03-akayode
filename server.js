@@ -1,4 +1,4 @@
-import { coinFlip } from "./coin.mjs";
+import { coinFlip } from './coin.mjs';
 
 const express = require('express')
 const app = express()
