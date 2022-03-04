@@ -1,5 +1,3 @@
-import { coinFlip } from './coin.mjs';
-
 const express = require('express')
 const app = express()
 const args = require('minimist')(process.argv.slice(2))
@@ -22,6 +20,16 @@ app.get('/app/', (req, res) => {
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
     res.end(res.statusCode + ' ' + res.statusMessage);
 });
+
+function coinFlip() {
+    let flip = Math.random();
+    if (flip < 0.5) {
+      var result = "heads";
+    } else {
+      var result = "tails";
+    }
+    return result;
+  }
 
 app.get('/app/flip', (req, res) => {
     var flip = coinFlip()
