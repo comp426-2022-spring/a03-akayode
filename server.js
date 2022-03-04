@@ -51,16 +51,15 @@ function countFlips(array) {
       }
     }
     if (heads > 0 && tails >0) {
-      var output = `{ heads: ${heads}, tails: ${tails} }`;
+      return {heads: heads, tails: tails}
     } else if (heads > 0 && tails == 0) {
-      var output = `{ heads: ${heads} }`;
+      return {heads: heads}
     } else {
-      var output = `{ tails: ${tails} }`;
+      return {tails: tails};
     }
-    return output;
 }
 
-app.get('/app/flips/:number([0-9]{1,4})', (req, res) => {
+app.get('/app/flips/:number', (req, res) => {
     var flips = coinFlips(req.params.number)
     var summary = countFlips(flips)
     res.status(200).json({"raw":flips,"summary":summary})
